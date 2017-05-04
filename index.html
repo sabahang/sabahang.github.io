@@ -1,102 +1,17 @@
-<!doctype html>
+---
+layout: default
+---
+<!-- Posts -->
+<ul id="posts">
 
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta name="description" content="The HTML5 Herald">
-	<meta name="author" content="SitePoint">
+	{% for post in paginator.posts %}
 
-	<title>Sabahang Long Awaited Portfolio</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-	<link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css">
-	<link rel="stylesheet" href="styles/custom-styles.css">
-</head>
+	  <li class="post">
+	  	<h2><a href="{% if site.baseurl == "/" %}{{ post.url }}{% else %}{{ post.url | prepend: site.baseurl }}{% endif %}">{{ post.title }}</a></h2>
+	  	<time datetime="{{ post.date | date_to_xmlschema }}" class="by-line">{{ post.date | date_to_string }}</time>
+	  	<p>{{ post.content | strip_html | truncatewords:50 }}</p>
+	  </li>
 
+    {% endfor %}
 
-<body>
-	<div class='container'>
-		<div class="row">
-			<div class="col-md-12">
-				<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-					<div class='col-md-12'>
-						<div class="navbar-header">
-						</button> <a class="navbar-brand" href="#">Sabahang Canvas of Imagination</a>
-					</div>
-					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<a href="#">Home</a>
-						</li>
-						<li>
-							<a href="#aboutme">About</a>
-						</li>
-						<li>
-							<a href="#">Portfolio</a>
-						</li>
-						<li>
-							<a href="#contactme">Contact</a>
-						</li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-	</div>
-	<div id='aboutme' class="jumbotron">
-		<h2>A few words about Saba</h2>
-		<p>
-			Having graduated from university and working closely with industry leading companies both at local and international scales is inspiring me more than ever to gain professional expertise in the realm of Software. Having a tendency towards becoming more technical I would like to pursue an influencer approach rather than a pure implementer and thus would like to gain insight by doing and contributing. contributing to Open Source and delivering value through agile teams are on the top of my agenda...
-		</p>
-	</div>
-	<h2 class='text-center'>Projects at work</h2>
-	<div class="row">
-		<div class="col-md-4">
-			<h3 class='text-center'>A Great App</h2>
-			<img class='img-responsive img-rounded center-block' src='images/proj1.jpg'>
-			<p>
-				<ul class='list-unstyled text-center'>
-					<li><b>A simple app that makes it great</b></li>
-					<li>Technology used: Bootstrap, HTML, CSS</li>
-				</ul>
-			</p>
-		</div>
-		<div class="col-md-4">
-			<h3 class='text-center'>Another Creative Design</h2>
-			<img class='img-responsive img-circle center-block' src='images/proj2.jpg'>
-			<p>
-				<ul class='list-unstyled text-center'>
-					<li><b>Design is everything</b></li>
-					<li>Technology used: Photoshop, HTML, CSS</li>
-				</ul>
-			</p>
-		</div>
-		<div class="col-md-4">
-			<h3 class='text-center'>Make sure it shines</h2>
-			<img class='img-responsive img-rounded center-block' src='images/proj3.jpg'>
-			<p>
-				<ul class='list-unstyled text-center'>
-					<li><b>Like you expect it, a good app shines</b></li>
-					<li>Technology used: JQuery, Javascript, CSS</li>
-				</ul>
-			</p>
-		</div>
-	</div>
-	<div class='jumbotron'>
-		<h2 id='contactme' class='text-center'>Contact me</h2>
-		<div class='row'>
-			<div class='col-md-3'>
-				<a class='btn btn-block btn-default' href='https://twitter.com/SabaAhang' target='_blank'>Twitter</a>
-			</div>
-			<div class='col-md-3'>
-				<a class='btn btn-block btn-default' href='https://www.linkedin.com/in/sabahang' target='_blank'>LinkedIn</a>
-			</div>
-			<div class='col-md-3'>
-				<a class='btn btn-block btn-default' href='https://github.com/sabahang' target='_blank'>GitHub</a>
-			</div>
-			<div class='col-md-3'>
-				<a class='btn btn-block btn-default' href='http://freecodecamp.com/sabahang' target='_blank'>Free Code Camp</a>
-			</div>
-		</div>
-	</div>
-</div>
-<script type="text/javascript" src="scripts/custom_actions.js" async></script>
-</body>
-</html>
+</ul>
